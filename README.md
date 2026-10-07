@@ -314,10 +314,6 @@ Press `Ctrl+Shift+P`, choose **Python: Select Interpreter**, and pick the one in
 
 This is a personal learning project, but suggestions are welcome. Open an issue or a pull request.
 
-## 📄 License
-
-Add a license of your choice (for example MIT) before publishing.
-
 ---
 
 <div align="center">
