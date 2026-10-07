@@ -1,0 +1,6 @@
+from store.models import Product
+from django.contrib.auth.models import User
+Product.objects.bulk_create([Product(name=f"Product {i}", price=i * 10) for i in range(1, 21)])
+User.objects.create_user("testuser", password="testpass123")
+Product.objects.count()
+exit()

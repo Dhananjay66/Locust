@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Login Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 420px; margin: 40px auto; }
+    input { width: 100%; padding: 8px; margin: 6px 0; box-sizing: border-box; }
+    button { padding: 8px 14px; margin-right: 6px; cursor: pointer; }
+    pre { background: #f3f3f3; padding: 12px; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <h2>Login test page</h2>
+
+  <input id="username" placeholder="Username">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="doLogin()">Login</button>
+  <button onclick="checkProfile()">Check profile</button>
+
+  <pre id="output">Result will appear here</pre>
+
+  <script>
+    async function show(res) {
+      const data = await res.json();
+      document.getElementById("output").textContent =
+        "Status: " + res.status + "\n" + JSON.stringify(data, null, 2);
+    }
+
+    async function doLogin() {
+      const res = await fetch("/login/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: document.getElementById("username").value,
+          password: document.getElementById("password").value,
+        }),
+      });
+      await show(res);
+    }
+
+    async function checkProfile() {
+      const res = await fetch("/profile/");
+      await show(res);
+    }
+  </script>
+</body>
+</html>
